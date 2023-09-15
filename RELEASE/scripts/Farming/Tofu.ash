@@ -276,10 +276,9 @@ if(available_amount($item[photocopied monster]) == 0 && !get_property('_photocop
         faxbot($monster[Witchess Knight], 'CheeseFax');
     else
         faxbot($monster[Witchess Bishop], 'CheeseFax');
-    use(1, $item[photocopied monster]);
 }
 
-foreach it in $items[ice sculpture, screencapped monster, shaking 4-d camera]
+foreach it in $items[photocopied monster, ice sculpture, screencapped monster, shaking 4-d camera]
 {
     use_familiar(ChooseFamiliar());
     equip($slot[familiar], $item[Mayflower bouquet]);
