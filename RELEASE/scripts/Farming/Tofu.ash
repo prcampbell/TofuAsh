@@ -42,7 +42,7 @@
 
 familiar ChooseFamiliar()
 {
-    foreach f in $familiars[Rogue Program, Li'l Xenomorph, Pair of Stomping Boots]
+    foreach f in $familiars[Li'l Xenomorph, Pair of Stomping Boots]
     {
         if ( have_familiar(f) && f.drops_today < 5 )
 			return f;
@@ -51,6 +51,23 @@ familiar ChooseFamiliar()
     }
 			
     return $familiar[Obtuse Angel];
+}
+
+familiar ChooseFamiliar(boolean FreeFight)
+{
+    if(FreeFight)
+    {
+        foreach f in $familiars[Rogue Program]
+        {
+            if (have_familiar(f) && f.drops_today < 5 )
+                return f;
+            return $familiar[Unspeakachu];
+        }
+    }
+    else
+    {
+        ChooseFamiliar();
+    }
 }
 
 boolean have(item it) 
@@ -123,6 +140,8 @@ if(get_property('breakfastCompleted') == 'false')
         use_familiar($familiar[obtuse angel]);
         use(1, $item[moveable feast]);
         use_familiar($familiar[Li'l Xenomorph]); //'    
+        use(1, $item[moveable feast]);
+        use_familiar($familiar[Unspeakachu]); //'    
         use(1, $item[moveable feast]);
         put_stash(1, $item[moveable feast]);
     }
@@ -280,7 +299,7 @@ if(available_amount($item[photocopied monster]) == 0 && !get_property('_photocop
 
 foreach it in $items[photocopied monster, ice sculpture, screencapped monster, shaking 4-d camera]
 {
-    use_familiar(ChooseFamiliar());
+    use_familiar(ChooseFamiliar(true));
     equip($slot[familiar], $item[Mayflower bouquet]);
     if(get_property('_cameraUsed').to_boolean())
     {
@@ -292,7 +311,7 @@ foreach it in $items[photocopied monster, ice sculpture, screencapped monster, s
 
 while(item_amount($item[spooky putty monster]) > 0)
 {
-    use_familiar(ChooseFamiliar());
+    use_familiar(ChooseFamiliar(true));
     equip($slot[familiar], $item[Mayflower bouquet]);
     if(item_amount($item[hair spray]) > 5 - get_property('spookyPuttyCopiesMade').to_int())
         put_closet(item_amount($item[hair spray]), $item[hair spray]);
@@ -304,21 +323,21 @@ if(item_amount($item[spooky putty sheet]) > 0)
 
 while(get_property("_lynyrdSnareUses").to_int() < 3)
 {
-    use_familiar(ChooseFamiliar());
+    use_familiar(ChooseFamiliar(true));
     equip($slot[familiar], $item[Mayflower bouquet]);
     use(1, $item[lynyrd snare]);
 }
 
 if(!get_property('_firedJokestersGun').to_boolean()) 
 {
-    use_familiar(ChooseFamiliar());
+    use_familiar(ChooseFamiliar(true));
     equip($slot[familiar], $item[Mayflower bouquet]);
     adv1($location[noob cave], -1, "");
 }  
 
 while(get_property('_drunkPygmyBanishes').to_int() < 11)
 {
-    use_familiar(ChooseFamiliar());
+    use_familiar(ChooseFamiliar(true));
     equip($slot[familiar], $item[Mayflower bouquet]);
     adv1($location[The Hidden Bowling Alley], -1, "");
 }
@@ -326,14 +345,14 @@ while(get_property('_drunkPygmyBanishes').to_int() < 11)
 while(get_property('_glarkCableUses').to_int() < 5)
 {
     
-    use_familiar(ChooseFamiliar());
+    use_familiar(ChooseFamiliar(true));
     equip($slot[familiar], $item[Mayflower bouquet]);
     adv1($location[The Red Zeppelin], -1, "");
 }
 
 while(get_property('_brickoFights').to_int() < 3)
 {
-    use_familiar(ChooseFamiliar());
+    use_familiar(ChooseFamiliar(true));
     equip($slot[familiar], $item[Mayflower bouquet]);
     use(1, $item[BRICKO ooze]);
 }
@@ -366,33 +385,6 @@ if(have_effect($effect[Ode to Booze]) > 0)
         adv1($location[the haunted library], -1, '');
     cli_execute('shrug Ode to Booze');
 }
-
-
-//abort('Reached end of testing');
-
-
-
-/*
-boolean have(item it) 
-{
-	return it.item_amount() > 0;
-}
-
-familiar ChooseFamiliar()
-{
-    foreach f in $familiars[Rogue Program, Li'l Xenomorph, Pair of Stomping Boots]
-    {
-        if ( have_familiar(f) && f.drops_today < 5 )
-			return f;
-        if ( f == $familiar[Pair of Stomping Boots] && f.drops_today < 7)
-            return f;
-    }
-			
-    return $familiar[Obtuse Angel];
-}
-*/
-
-
 
 if(numeric_modifier("Smithsness") > 70)
 {
@@ -440,8 +432,6 @@ else
     //while (my_adventures() + 306 > have_effect($effect[In Your Cups])) 
     while(my_adventures() > 122)
     {
-        /*if(have_effect($effect[Everything Looks Yellow]) == 0)
-            abort('Time To YR something');*/
         if(get_counters("Romantic Monster window end", -50, 0) == "Romantic Monster window end" && get_property('_romanticFightsLeft').to_int() > 0)
             adventure(1 , $location[The Electric Lemonade Acid Parade]);
     
@@ -470,8 +460,7 @@ foreach it in $items[game grid token]
     put_shop(mall_price(it)*0.9, 1, item_amount(it),it);
 
 foreach it in $items[time's arrow]
-    //put_shop(mall_price(it)*0.9, 1, item_amount(it)-3, it);
-    put_shop(40000, 1, item_amount(it)-3, it);
+    put_shop(mall_price(it)*0.9, 1, item_amount(it)-3, it);
 
 foreach it in $items[essential tofu]
     put_shop(5000, 1, item_amount(it)-3, it);
