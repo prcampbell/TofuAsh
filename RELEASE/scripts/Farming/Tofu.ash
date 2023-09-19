@@ -64,10 +64,9 @@ familiar ChooseFamiliar(boolean FreeFight)
             return $familiar[Unspeakachu];
         }
     }
-    else
-    {
-        ChooseFamiliar();
-    }
+    
+    return ChooseFamiliar();
+
 }
 
 boolean have(item it) 
