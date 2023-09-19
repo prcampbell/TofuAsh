@@ -487,7 +487,7 @@ Resolutions: Be More Adventurous
 
 while(get_property('_monkeyPawWishesUsed').to_int() < 5)
 {
-    cli_execute('_monkeyPawWishesUsed');
+    cli_execute('monkeypaw effect in your cups');
 }
 
 cli_execute('call LoadStash');
