@@ -99,6 +99,7 @@ if(get_property('breakfastCompleted') == 'false')
     }
     
     retrieve_item(2, $item[Louder than Bomb]); //14 000
+    retrieve_item(1, $item[absentee voter ballot  ]);
     retrieve_item(2, $item[Divine champagne popper]); //16 000
     retrieve_item(2, $item[tennis ball]); //16 000
     retrieve_item(2, $item[Spooky music box mechanism]); //400
@@ -163,8 +164,9 @@ if(get_property('breakfastCompleted') == 'false')
       
 }
     
-cli_execute("charpane.php");
-cli_execute("chat");
+//cli_execute("charpane.php");
+//cli_execute("chat");
+cli_execute("refresh all");
 
 
 
@@ -294,6 +296,7 @@ if(available_amount($item[photocopied monster]) == 0 && !get_property('_photocop
         faxbot($monster[Witchess Knight], 'CheeseFax');
     else
         faxbot($monster[Witchess Bishop], 'CheeseFax');
+    cli_execute('fax recieve');
 }
 
 foreach it in $items[photocopied monster, ice sculpture, screencapped monster, shaking 4-d camera]
