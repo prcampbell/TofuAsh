@@ -292,11 +292,11 @@ if(available_amount($item[photocopied monster]) == 0 && !get_property('_photocop
 {
     //faxbot($monster[swarm of fudge wasps], 'CheeseFax');
     
-    if(mall_price($item[jumping horseradish]) > mall_price($item[sacramento wine]))
-        faxbot($monster[Witchess Knight], 'CheeseFax');
-    else
-        faxbot($monster[Witchess Bishop], 'CheeseFax');
-    cli_execute('fax recieve');
+    //if(mall_price($item[jumping horseradish]) > mall_price($item[sacramento wine]))
+    //    faxbot($monster[Witchess Knight], 'CheeseFax');
+    //else
+    //    faxbot($monster[Witchess Bishop], 'CheeseFax');
+    cli_execute('fax receive');
 }
 
 foreach it in $items[photocopied monster, ice sculpture, screencapped monster, shaking 4-d camera]
