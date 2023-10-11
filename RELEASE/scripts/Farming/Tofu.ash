@@ -525,7 +525,7 @@ if(my_meat() > 1000000)
     buy(1, $item[ice stein]);
     buy(1, $item[ice-cold six-pack]);
     
-    use(1, $item[ice-cold six-pack]);
+    use(1, $item[ice stein]);
     cli_execute("shrug Ode to Booze");
 }
 
