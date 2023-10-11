@@ -392,12 +392,10 @@ if(numeric_modifier("Smithsness") > 70)
 {
     print("Farming day! " + to_string(my_adventures()) + " adventures to spend!");
     cli_execute('outfit TofuFarming');
-    cli_execute('rest');
     use(1, $item[The Legendary Beat]);
     //
     // Extend Buffs
     //
-
 
     if (!(to_boolean(get_property("_bagOTricksUsed"))) && (take_stash(1 , $item[Bag o' Tricks])||item_amount($item[Bag o' Tricks]) > 0)) 
     {
@@ -405,6 +403,11 @@ if(numeric_modifier("Smithsness") > 70)
         cli_execute("/shrug ode to booze");
         use(1, $item[Bag o' Tricks]);
         put_stash(1 , $item[Bag o' Tricks]);
+    }
+    if (!(to_boolean(get_property("expressCardUsed"))) && (take_stash(1 , $item[Platinum Yendorian Express Card])||item_amount($item[Platinum Yendorian Express Card]) > 0)) 
+    {
+        use(1, $item[Platinum Yendorian Express Card]);
+        put_stash(1 , $item[Platinum Yendorian Express Card]);
     }
 
     cli_execute("mood acidparade");
@@ -513,6 +516,17 @@ if(my_meat() > 1000000)
         else   
             break;
     } 
+}
+
+if(my_meat() > 1000000)
+{
+    cli_execute("csend to buffy || ode empathy lyric");
+    wait(30);
+    buy(1, $item[ice stein]);
+    buy(1, $item[ice-cold six-pack]);
+    
+    use(1, $item[ice-cold six-pack]);
+    cli_execute("shrug Ode to Booze");
 }
 
 print("Probably done for the day!");
