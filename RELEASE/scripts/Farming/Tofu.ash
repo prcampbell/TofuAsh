@@ -498,7 +498,7 @@ Resolutions: Be More Adventurous
 */
 
 
-while(get_property('_monkeyPawWishesUsed').to_int() < 5)
+while(get_property('_monkeyPawWishesUsed').to_int() < 4)
 {
     cli_execute('monkeypaw effect in your cups');
 }
@@ -531,8 +531,12 @@ if(my_meat() > 1000000)
     wait(30);
     buy(1, $item[ice stein]);
     buy(1, $item[ice-cold six-pack]);
-    
+    cli_execute('Salty Mouth');
     use(1, $item[ice stein]);
+}
+else
+{
+    cli_execute('monkeypaw effect in your cups');
 }
 
 print("Probably done for the day!");
