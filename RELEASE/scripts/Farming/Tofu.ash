@@ -428,6 +428,10 @@ if(numeric_modifier("Smithsness") > 70)
     while (my_adventures() > 0 && have_effect($effect[In Your Cups]) > 10) 
     {
         use_familiar(ChooseFamiliar());
+        if(have_effect($effect[Holiday Bliss]) == 0 && get_property('timesRested').to_int() < total_free_rests())
+        {
+            cli_execute('rest');
+        }
         equip($slot[familiar], $item[Mayflower bouquet]);
         if(have_effect($effect[Fat Leon's Phat Loot Lyric]) < 100) //'
             cli_execute("csend to buffy || lyric");
@@ -442,7 +446,7 @@ else
     print("Charging day! " + to_string(my_adventures()) + " adventures to spend!");
     cli_execute("mood apathetic");
     //while (my_adventures() + 306 > have_effect($effect[In Your Cups])) 
-    while(my_adventures() > 122)
+    while(my_adventures() > 99)
     {
         if(get_counters("Romantic Monster window end", -50, 0) == "Romantic Monster window end" && get_property('_romanticFightsLeft').to_int() > 0)
             adventure(1 , $location[The Electric Lemonade Acid Parade]);
@@ -456,6 +460,11 @@ else
     if (!(to_boolean(get_property("_bagOTricksUsed"))) && (take_stash(1 , $item[Bag o' Tricks])||item_amount($item[Bag o' Tricks]) > 0)) {
         use(1, $item[Bag o' Tricks]);
         put_stash(1 , $item[Bag o' Tricks]);
+    }
+    if (!(to_boolean(get_property("expressCardUsed"))) && (take_stash(1 , $item[Platinum Yendorian Express Card])||item_amount($item[Platinum Yendorian Express Card]) > 0)) 
+    {
+        use(1, $item[Platinum Yendorian Express Card]);
+        put_stash(1 , $item[Platinum Yendorian Express Card]);
     } 
 }
 
