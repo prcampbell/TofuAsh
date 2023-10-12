@@ -284,7 +284,13 @@ set_auto_attack('TofuFarming');
 cli_execute('outfit FreeFights');
 use_familiar($familiar[Obtuse Angel]);
 equip($item[quake of arrows]);
-cli_execute("csend to buffy || ode empathy lyric");
+
+if(have_effect($effect[The Ode to Booze]) == 0)
+{
+    cli_execute("csend to buffy || ode");
+}
+
+cli_execute("csend to buffy || empathy lyric");
 cli_execute("mood apathetic");
 
 // Fax
@@ -520,13 +526,12 @@ if(my_meat() > 1000000)
 
 if(my_meat() > 1000000)
 {
-    cli_execute("csend to buffy || ode empathy lyric");
+    cli_execute("csend to buffy || ode");
     wait(30);
     buy(1, $item[ice stein]);
     buy(1, $item[ice-cold six-pack]);
     
     use(1, $item[ice stein]);
-    cli_execute("shrug Ode to Booze");
 }
 
 print("Probably done for the day!");
