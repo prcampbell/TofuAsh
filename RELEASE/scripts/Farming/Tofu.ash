@@ -42,7 +42,8 @@
 
 familiar ChooseFamiliar()
 {
-    foreach f in $familiars[Li'l Xenomorph, Pair of Stomping Boots]
+    foreach f in $familiars[Li'l Xenomorph]
+    //$familiars[Li'l Xenomorph, Pair of Stomping Boots]
     {
         if ( have_familiar(f) && f.drops_today < 5 )
 			return f;
