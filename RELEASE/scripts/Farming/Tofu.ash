@@ -106,6 +106,7 @@ if(get_property('breakfastCompleted') == 'false')
     retrieve_item(2, $item[Spooky music box mechanism]); //400
     retrieve_item(1, $item[crystal skull]); //6 500
     buy(1, $item[human musk]); //100
+    buy(1, $item[map to a candy-rich block]);
     retrieve_item(15, $item[meat paste]); //1 500
     retrieve_item(1, $item[borrowed time]); //8 000
     retrieve_item(1, $item[software glitch]); //12 000
@@ -286,7 +287,7 @@ cli_execute('outfit FreeFights');
 use_familiar($familiar[Obtuse Angel]);
 equip($item[quake of arrows]);
 
-if(have_effect($effect[The Ode to Booze]) == 0)
+if(have_effect($effect[Ode to Booze]) == 0)
 {
     cli_execute("csend to buffy || ode");
 }
