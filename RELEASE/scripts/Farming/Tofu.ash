@@ -541,8 +541,9 @@ if(my_meat() > 1000000)
     wait(30);
     buy(1, $item[ice stein]);
     buy(1, $item[ice-cold six-pack]);
-    cli_execute('Salty Mouth');
+    cli_execute('monkeypaw effect Salty Mouth');
     use(1, $item[ice stein]);
+    cli_execute("shrug ode");
 }
 else
 {
