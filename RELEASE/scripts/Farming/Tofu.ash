@@ -77,17 +77,6 @@ boolean have(item it)
 	return it.item_amount() > 0;
 }
 
-//VotingBooth.ash
-//Auto-votes. Biases the kingdom towards more ghosts, because those are more useful in-run. Otherwise, votes randomly.
-//Exception: Until Vampyre ends, prefers snakes.
-//Also logs daily initiatives in the format:
-//VOTING_BOOTH_LOG•daycount•class•path
-//Useful for spading.
-
-//If using this in a script:
-//import "VotingBooth.ash";
-//voteInVotingBooth();
-
 boolean __voting_setting_allow_ml = true; //set to false if you do not want +monster level in-run
 boolean __voting_setting_make_extra_adventure_in_run_super_important = false; //set to true if you always want that +1 adventure. high-end runs don't?
 
@@ -389,6 +378,7 @@ boolean doVoterFight()
     );
 
     cli_execute('outfit Voter');
+    ChooseFamiliar(freeFight);
 
     adv1($location["The Electric Lemonade Acid Parade"], 1, "");
 
