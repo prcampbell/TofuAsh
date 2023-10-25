@@ -436,6 +436,8 @@ if(get_property('breakfastCompleted') == 'false')
         retrieve_item($item[unfinished ice sculpture]);
     if(item_amount($item[BRICKO eye brick]) > 2)
         retrieve_item(3, $item[BRICKO ooze]);
+    if(my_meat() > 1000000)
+        retrieve_item(10, $item[BRICKO ooze]);
     /*
     retrieve_item(10, $item[VYKEA Rail]); //130 000
     retrieve_item(1, $item[VYKEA Instructions]); //7 000
@@ -677,7 +679,7 @@ while(get_property('_glarkCableUses').to_int() < 5)
     adv1($location[The Red Zeppelin], -1, "");
 }
 
-while(get_property('_brickoFights').to_int() < 3)
+while(get_property('_brickoFights').to_int() < 10 && item_amount($item[BRICKO ooze]) > 0)
 {
     use_familiar(ChooseFamiliar(true));
     equip($slot[familiar], $item[Mayflower bouquet]);
