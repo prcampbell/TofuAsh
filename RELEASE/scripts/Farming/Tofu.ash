@@ -86,7 +86,7 @@ boolean have(item it)
 
 //If using this in a script:
 //import "VotingBooth.ash";
-voteInVotingBooth();
+//voteInVotingBooth();
 
 boolean __voting_setting_allow_ml = true; //set to false if you do not want +monster level in-run
 boolean __voting_setting_make_extra_adventure_in_run_super_important = false; //set to true if you always want that +1 adventure. high-end runs don't?
@@ -97,10 +97,11 @@ string __voting_version = "2.0.2";
 
 //Higher is better. Identical is random.
 //Default: Vote for ghosts, random otherwise.
+//Bias towards bureaucrats, because we want absentee ballots.
 int [monster] __voting_setting_monster_priorities =
 {
-	$monster[Angry ghost]:5, //harder to fight in-run, but give in-run goodies
-	$monster[government bureaucrat]:0, //nice for absentee ballots, but
+	$monster[Angry ghost]:0, //harder to fight in-run, but give in-run goodies
+	$monster[government bureaucrat]:5, //nice for absentee ballots, but
 	$monster[Terrible mutant]:0, //technically optimal in-run, but the effect is minor
 	$monster[Slime blob]:0, //harder to fight in-run
 	$monster[Annoyed snake]:0,
@@ -141,7 +142,7 @@ void voteInVotingBooth(boolean allow_interacting_with_user)
 	//Larger numbers are the best initiatives.
 	float [string] initiative_priorities;
 	initiative_priorities["State-mandated bed time of 8PM."] = 100; //+1 Adventure(s) per day
-	initiative_priorities["Repeal leash laws."] = 75; //+2 Familiar Experience Per Combat
+	initiative_priorities["Repeal leash laws."] = 25; //+2 Familiar Experience Per Combat
 	initiative_priorities["Institute GBLI (Guaranteed Basic Loot Income.)"] = 50; //+15% Item Drops from Monsters
 	initiative_priorities["Reduced taxes at all income levels."] = 45; //+30% Meat from Monsters
 	initiative_priorities["Mandatory morning calisthenics for all citizens."] = 42; //Muscle +25%
@@ -174,29 +175,7 @@ void voteInVotingBooth(boolean allow_interacting_with_user)
 	initiative_priorities["Ban belts."] = 10; //+30% Pants Drops from Monsters
 	initiative_priorities["Mandatory martial arts classes for all citizens."] = 0; //+20 Damage to Unarmed Attacks
 	initiative_priorities["\"Song that Never Ends\" pumped throughout speakers in all of Kingdom."] = -100; //+10 to Monster Level
-	//Alter priorities depending on state:
-	if (my_level() < 13)
-	{
-		//Want stats:
-		stat primestat = my_primestat();
-		if (primestat == $stat[muscle])
-			initiative_priorities["Require boxing videos to be played on all bar televisions."] = 60; //+4 Muscle Stats Per Fight
-		else if (primestat == $stat[mysticality])
-			initiative_priorities["Deployment of a network of aerial mana-enhancement drones."] = 60; //+4 Mysticality Stats Per Fight
-		else if (primestat == $stat[moxie])
-			initiative_priorities["Emergency eye make-up stations installed in all public places."] = 60; //+4 Moxie Stats Per Fight
-		initiative_priorities["Municipal journaling initiative."] = 50; //+3 Stats Per Fight
-	}
-	//We only choose +ML while in-run and it's allowed.
-	boolean king_liberated = get_property("kingLiberated").to_boolean();
-	if (__voting_setting_allow_ml && !king_liberated)
-		initiative_priorities["\"Song that Never Ends\" pumped throughout speakers in all of Kingdom."] = 50; //+10 to Monster Level
-	//In-run, +1 adventure is like rounding? Except in HCO I suppose.
-	if (!__voting_setting_make_extra_adventure_in_run_super_important && !king_liberated)
-		initiative_priorities["State-mandated bed time of 8PM."] = 40; //+1 Adventure(s) per day
-	//Out of run, familiar experience is... marginal?
-	if (king_liberated)
-		initiative_priorities["Repeal leash laws."] = 25; //+2 Familiar Experience Per Combat
+	
 	if (my_path().id == 35) //can't +hp
 		initiative_priorities["Subsidies for health potion manufacturers."] = -100; //Maximum HP +30%
 
