@@ -542,6 +542,7 @@ if (my_absorbs() < 15)
             		cli_execute("absorb light that never goes out");
 		}
 		use(2, $item[Flaskfull of Hollow]);
+        isFarmingDay = true;
 	} 
     else 
     {
