@@ -609,8 +609,6 @@ if(item_amount($item[volcoino]) > 2 && user_confirm("Have 3 Volcoinos, do you wa
 }
 */
 
-doVoterFight();
-
 set_auto_attack('TofuFarming');
 cli_execute('outfit FreeFights');
 use_familiar($familiar[Obtuse Angel]);
@@ -758,6 +756,7 @@ if(numeric_modifier("Smithsness") > 70)
     cli_execute('mood execute');
     while (my_adventures() > 0 && have_effect($effect[In Your Cups]) > 10) 
     {
+        doVoterFight();
         use_familiar(ChooseFamiliar());
         if(have_effect($effect[Holiday Bliss]) == 0 && get_property('timesRested').to_int() < total_free_rests())
         {
@@ -779,9 +778,10 @@ else
     //while (my_adventures() + 306 > have_effect($effect[In Your Cups])) 
     while(my_adventures() > 99)
     {
+        
         if(get_counters("Romantic Monster window end", -50, 0) == "Romantic Monster window end" && get_property('_romanticFightsLeft').to_int() > 0)
             adventure(1 , $location[The Electric Lemonade Acid Parade]);
-    
+        doVoterFight();
         visit_url("inv_use.php?pwd&whichitem=4613&teacups=1");
         if(my_adventures() == 0)
             break;
