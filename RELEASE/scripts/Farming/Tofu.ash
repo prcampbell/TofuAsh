@@ -351,9 +351,10 @@ void voteInVotingBooth(boolean allow_interacting_with_user)
 	//g - 1 or 2, depending on the global vote
 }
 
+
 boolean doVoterFight()
 {
-    if (available_amount($item["I voted" Sticker]) == 0) 
+    if (available_amount($item[&quot;I Voted!&quot; sticker]) == 0) 
     {
       return false;
     }
@@ -368,7 +369,7 @@ boolean doVoterFight()
         return false;
       }
 
-      if (getProperty("_voteMonster") != "government bureaucrat") 
+      if (get_property("_voteMonster") != "government bureaucrat") 
       {
         return false;
       }
@@ -486,7 +487,7 @@ if(get_property('breakfastCompleted') == 'false')
         visit_url('campground.php?action=spinningwheel');
     }
 
-    voteInVotingBooth();
+    voteInVotingBooth(false);
       
 }
     
