@@ -693,7 +693,7 @@ if(!get_property("_eldritchTentacleFought").to_boolean())
 }
 
 equip($item[Greatest American Pants]);
-use_familiar($familiar[rogue program]);
+use_familiar($familiar[Unspeakachu]);
 
 while(get_property('_navelRunaways').to_int() < 3)
     adv1($location[The Haunted Library], -1, '');
