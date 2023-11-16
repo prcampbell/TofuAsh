@@ -416,10 +416,10 @@ if(get_property('breakfastCompleted') == 'false')
     retrieve_item(1, $item[absentee voter ballot]);
     retrieve_item(2, $item[Divine champagne popper]); //16 000
     retrieve_item(2, $item[tennis ball]); //16 000
-    retrieve_item(2, $item[Spooky music box mechanism]); //400
+    //retrieve_item(2, $item[Spooky music box mechanism]); //400
     retrieve_item(1, $item[crystal skull]); //6 500
     buy(1, $item[human musk]); //100
-    buy(1, $item[map to a candy-rich block]);
+    retrieve_item(1, $item[map to a candy-rich block]);
     retrieve_item(15, $item[meat paste]); //1 500
     retrieve_item(1, $item[borrowed time]); //8 000
     retrieve_item(1, $item[software glitch]); //12 000
@@ -688,6 +688,7 @@ while(get_property('_brickoFights').to_int() < 10 && item_amount($item[BRICKO oo
 
 if(!get_property("_eldritchTentacleFought").to_boolean())
 {
+    use_familiar(ChooseFamiliar(true));
     visit_url("place.php?whichplace=forestvillage&action=fv_scientist");
 	run_choice($item[eldritch essence].have() ? 2 : 1);
 }
