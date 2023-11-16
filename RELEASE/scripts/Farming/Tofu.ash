@@ -694,10 +694,13 @@ if(!get_property("_eldritchTentacleFought").to_boolean())
 }
 
 equip($item[Greatest American Pants]);
-use_familiar($familiar[Unspeakachu]);
 
-while(get_property('_navelRunaways').to_int() < 3)
-    adv1($location[The Haunted Library], -1, '');
+
+while(get_property('_navelRunaways').to_int() < 3 && use_familiar($familiar[Unspeakachu]))
+{
+    adv1($location[The Haunted Library], -1, '');    
+}
+
 
 if(have_effect($effect[Ode to Booze]) > 0)
 {
