@@ -615,7 +615,7 @@ cli_execute("csend to buffy || empathy lyric");
 cli_execute("mood apathetic");
 
 // Fax
-if(available_amount($item[photocopied monster]) == 0 && !get_property('_photocopyUsed').to_boolean())
+if(available_amount($item[photocopied monster]) == 0 && !get_property('_photocopyUsed').to_boolean() && get_property('photocopyMonster') == 'Witchess Knight')
 {
     //faxbot($monster[swarm of fudge wasps], 'CheeseFax');
     
@@ -694,7 +694,6 @@ if(!get_property("_eldritchTentacleFought").to_boolean())
 }
 
 equip($item[Greatest American Pants]);
-
 
 while(get_property('_navelRunaways').to_int() < 3 && use_familiar($familiar[Unspeakachu]))
 {
