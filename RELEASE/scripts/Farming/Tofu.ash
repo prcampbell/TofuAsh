@@ -416,10 +416,10 @@ if(get_property('breakfastCompleted') == 'false')
     retrieve_item(1, $item[absentee voter ballot]);
     retrieve_item(2, $item[Divine champagne popper]); //16 000
     retrieve_item(2, $item[tennis ball]); //16 000
-    retrieve_item(2, $item[Spooky music box mechanism]); //400
+    //retrieve_item(2, $item[Spooky music box mechanism]); //400
     retrieve_item(1, $item[crystal skull]); //6 500
     buy(1, $item[human musk]); //100
-    buy(1, $item[map to a candy-rich block]);
+    retrieve_item(1, $item[map to a candy-rich block]);
     retrieve_item(15, $item[meat paste]); //1 500
     retrieve_item(1, $item[borrowed time]); //8 000
     retrieve_item(1, $item[software glitch]); //12 000
@@ -629,7 +629,7 @@ cli_execute("csend to buffy || empathy lyric");
 cli_execute("mood apathetic");
 
 // Fax
-if(available_amount($item[photocopied monster]) == 0 && !get_property('_photocopyUsed').to_boolean())
+if(available_amount($item[photocopied monster]) == 0 && !get_property('_photocopyUsed').to_boolean() && get_property('photocopyMonster') == 'Witchess Knight')
 {
     //faxbot($monster[swarm of fudge wasps], 'CheeseFax');
     
@@ -702,15 +702,18 @@ while(get_property('_brickoFights').to_int() < 10 && item_amount($item[BRICKO oo
 
 if(!get_property("_eldritchTentacleFought").to_boolean())
 {
+    use_familiar(ChooseFamiliar(true));
     visit_url("place.php?whichplace=forestvillage&action=fv_scientist");
 	run_choice($item[eldritch essence].have() ? 2 : 1);
 }
 
 equip($item[Greatest American Pants]);
-use_familiar($familiar[Obtuse Angel]);
 
-while(get_property('_navelRunaways').to_int() < 3)
-    adv1($location[The Haunted Library], -1, '');
+while(get_property('_navelRunaways').to_int() < 3 && use_familiar($familiar[Unspeakachu]))
+{
+    adv1($location[The Haunted Library], -1, '');    
+}
+
 
 if(have_effect($effect[Ode to Booze]) > 0)
 {
