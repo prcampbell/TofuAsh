@@ -587,6 +587,20 @@ if (my_meat() > 1000000 && get_property('_loveChocolatesUsed').to_int() == 0)
         use(1,$item[LOV Extraterrestrial Chocolate]);
 } 
 
+if (my_meat() > 1000000) 
+{
+    while (to_int(get_property("_extraTimeUsed")) < 1) 
+    {
+        if (retrieve_item(1, $item[Extra Time])) 
+        {
+            use(1, $item[Extra Time]);
+        } else 
+        {
+            break;
+        }
+	}
+}
+
 use(1, $item[Bittycar Meatcar]);
 
 
@@ -693,7 +707,7 @@ if(!get_property("_eldritchTentacleFought").to_boolean())
 }
 
 equip($item[Greatest American Pants]);
-use_familiar($familiar[Unspeakachu]);
+use_familiar($familiar[Obtuse Angel]);
 
 while(get_property('_navelRunaways').to_int() < 3)
     adv1($location[The Haunted Library], -1, '');
