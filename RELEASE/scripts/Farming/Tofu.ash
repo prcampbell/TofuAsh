@@ -709,7 +709,7 @@ if(!get_property("_eldritchTentacleFought").to_boolean())
 
 equip($item[Greatest American Pants]);
 
-while(get_property('_navelRunaways').to_int() < 3 && use_familiar($familiar[Unspeakachu]))
+while(get_property('_navelRunaways').to_int() < 3 && use_familiar($familiar[baby gravy fairy]))
 {
     adv1($location[The Haunted Library], -1, '');    
 }
