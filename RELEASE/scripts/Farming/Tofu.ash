@@ -394,7 +394,20 @@ boolean doVoterFight()
 
 if(get_property('breakfastCompleted') == 'false')
 {
-    cli_execute('call TakeStash');
+    if(stash_amount($item[Bag o' Tricks]) > 0) //'
+    take_stash(1 , $item[Bag o' Tricks]); //'
+    if(stash_amount($item[Buddy Bjorn]) > 0)
+        take_stash(1 , $item[Buddy Bjorn]);
+    if(stash_amount($item[Moveable Feast]) > 0)
+        take_stash(1 , $item[Moveable Feast]);
+    if(stash_amount($item[Spooky Putty Sheet]) > 0)
+        take_stash(1 , $item[Spooky Putty Sheet]);
+    if(stash_amount($item[Defective Game Grid Token]) > 0)
+        take_stash(1 , $item[Defective Game Grid Token]);
+    if(stash_amount($item[Greatest American Pants]) > 0)
+        take_stash(1 , $item[Greatest American Pants]);  
+    if(stash_amount($item[BittyCar MeatCar]) > 0)
+        take_stash(1 , $item[BittyCar MeatCar]); 
 
     //cli_execute('closet put * meat; closet take 1000000 meat;');
     
@@ -852,12 +865,26 @@ while(get_property('_monkeyPawWishesUsed').to_int() < 4)
     cli_execute('monkeypaw effect in your cups');
 }
 
-cli_execute('call LoadStash');
-if(item_amount($item[stinky cheese eye]) == 1)
-{
-    put_stash(1, $item[stinky cheese eye]);
+cli_execute('outfit birthday suit');
 
-}
+if(closet_amount($item[Spooky Putty Sheet]) > 0)
+    take_closet($item[Spooky Putty Sheet]);
+
+if(item_amount($item[Bag o' Tricks]) > 0) //'
+    put_stash(1 , $item[Bag o' Tricks]); //'
+if(item_amount($item[Buddy Bjorn]) > 0)
+    put_stash(1 , $item[Buddy Bjorn]);
+if(item_amount($item[Moveable Feast]) > 0)
+    put_stash(1 , $item[Moveable Feast]);
+if(item_amount($item[Spooky Putty Sheet]) > 0)
+    put_stash(1 , $item[Spooky Putty Sheet]);
+if(item_amount($item[Defective Game Grid Token]) > 0)
+    put_stash(1 , $item[Defective Game Grid Token]);
+if(item_amount($item[Greatest American Pants]) > 0)
+    put_stash(1 , $item[Greatest American Pants]); 
+if(item_amount($item[BittyCar MeatCar]) > 0)
+    put_stash(1, $item[BittyCar MeatCar]);
+    
 cli_execute('outfit Pajamas');
 use_familiar($familiar[gelatinous Cubeling]);
 equip($slot[familiar], $item[none]);
