@@ -394,7 +394,7 @@ boolean doVoterFight()
 
 if(get_property('breakfastCompleted') == 'false')
 {
-    if(get_property('autoBuyPriceLimit').to_int() <> 100000)
+    if(get_property('autoBuyPriceLimit').to_int() != 100000)
         set_property('autoBuyPriceLimit', 100000);
     if(stash_amount($item[Bag o' Tricks]) > 0) //'
     take_stash(1 , $item[Bag o' Tricks]); //'
