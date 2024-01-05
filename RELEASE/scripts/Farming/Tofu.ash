@@ -843,7 +843,7 @@ foreach it in $items[time's arrow]
     put_shop(mall_price(it)*0.9, 1, item_amount(it)-3, it);
 
 foreach it in $items[essential tofu]
-    put_shop(5000, 1, item_amount(it)-3, it);
+    put_shop(10000, 1, item_amount(it)-3, it);
 
 //
 // Clear out Food
