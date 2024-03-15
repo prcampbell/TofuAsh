@@ -345,7 +345,7 @@ boolean doVoterFight()
 {
     if (available_amount($item[&quot;I Voted!&quot; sticker]) == 0) 
     {
-      return false;
+        return false;
     }
 
     boolean freeFight = get_property("_voteFreeFights").to_int() < 3;
@@ -353,15 +353,15 @@ boolean doVoterFight()
     if (!freeFight) 
     {
 
-      if (!isFarmingDay) 
-      {
-        return false;
-      }
+        if (!isFarmingDay) 
+        {
+            return false;
+        }
 
-      if (get_property("_voteMonster") != "government bureaucrat") 
-      {
-        return false;
-      }
+        if (get_property("_voteMonster") != "government bureaucrat") 
+        {
+            return false;
+        }
 
     }
 
@@ -369,12 +369,12 @@ boolean doVoterFight()
 
     if (!vote_fight_now) 
     {
-      return false;
+        return false;
     } 
 
     print(
-      "Someone is trying to take away my gun rights! I voted for those! Not today!",
-      "gray"
+        "Someone is trying to take away my gun rights! I voted for those! Not today!",
+        "gray"
     );
 
     cli_execute('outfit Voter');
@@ -385,7 +385,26 @@ boolean doVoterFight()
     cli_execute('outfit TofuFarming');
 
     return true;
-  }
+}
+
+boolean doWormFight()
+{
+    if(have_effect($effect[Everything Looks Red]) > 0)
+    {
+        return false;
+    }
+
+    print(
+        "HAII YOH!",
+        "gray"
+    );
+
+    cli_execute('acquire 1 drum machine');
+    ChooseFamiliar(freeFight);
+    use(1, $item[drum machine]);
+
+    return true;
+}
 
 
 //
@@ -795,6 +814,10 @@ if(numeric_modifier("Smithsness") > 70)
             cli_execute("csend to buffy || lyric");
         
         cli_execute('gain 1900 item');
+        while(get_property('shockingLickCharges').to_int() > 0)
+        {
+            doWormFight();
+        }
         adventure(1 , $location[The Electric Lemonade Acid Parade]);
     }
     put_stash(3, $item[essential tofu]);
