@@ -801,6 +801,8 @@ if(numeric_modifier("Smithsness") > 70)
 
     retrieve_item(1, $item[Human Musk]);
     cli_execute('mood execute');
+    if(have_effect($effect[Fat Leon's Phat Loot Lyric]) < 100) //'
+        cli_execute("csend to buffy || lyric");
     while (my_adventures() > 0 && have_effect($effect[In Your Cups]) > 10) 
     {
         doVoterFight();
@@ -810,8 +812,7 @@ if(numeric_modifier("Smithsness") > 70)
             cli_execute('rest');
         }
         equip($slot[familiar], $item[Mayflower bouquet]);
-        if(have_effect($effect[Fat Leon's Phat Loot Lyric]) < 100) //'
-            cli_execute("csend to buffy || lyric");
+
         
         cli_execute('gain 1900 item');
         while(get_property('shockingLickCharges').to_int() > 0)
