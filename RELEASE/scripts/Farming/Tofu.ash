@@ -400,7 +400,7 @@ boolean doWormFight()
     );
 
     cli_execute('acquire 1 drum machine');
-    ChooseFamiliar(freeFight);
+    ChooseFamiliar(true);
     use(1, $item[drum machine]);
 
     return true;
