@@ -814,7 +814,7 @@ if(numeric_modifier("Smithsness") > 70)
         equip($slot[familiar], $item[Mayflower bouquet]);
 
         
-        cli_execute('gain 1900 item');
+        //cli_execute('gain 1900 item');
         while(get_property('shockingLickCharges').to_int() > 0)
         {
             doWormFight();
